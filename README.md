@@ -77,6 +77,18 @@ The data folder contains an example reads dataset and kmer tables.
 It can be used to test if RecoverY runs to completion. 
 
 
+### Generating k-mer plots 
+
+Matplotlib and Seaborn are required to generate k-mer plots. 
+
+           pip install matplotlib
+           pip install seaborn
+
+After installation, please un-comment the following line from recoverY.py :
+
+           plot_kmers.plot_kmers()
+
+
 ### Scripts 
 
 The following scripts are included with this distribution of RecoverY, and are automatically run by recovery.py as part of the pipeline. Users may consider them separately for custom needs if required. 

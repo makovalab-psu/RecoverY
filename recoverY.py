@@ -14,8 +14,9 @@ def main():
     print "Running kmerPaint"
     kmerPaint.kmerPaint()
 
-    print "Generating kmer plot"
-    plot_kmers.plot_kmers()
+    # Un-comment the lines below if you have matplotlib and seaborn
+    # print "Generating kmer plot"
+    # plot_kmers.plot_kmers()
 
     print "Shortlisting Y-reads"
     classify_as_Y_chr.classify_as_Y_chr()
