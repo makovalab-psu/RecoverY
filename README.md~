@@ -22,7 +22,7 @@ Important parameters for the user to choose are :
 
 ### Installation 
 
-	git clone https://github.com/makovalab-psu/RecoverY
+	git clone https://github.com/md5sam/RecoverY.git
 	cd RecoverY
 
 
@@ -93,4 +93,4 @@ This program is released under the MIT License. Please see LICENSE.md for detail
 
 ### Citation
 Please cite this Github repository if you use this tool in your research. Thanks !
-https://github.com/makovalab-psu/RecoverY
+https://github.com/md5sam/RecoverY
