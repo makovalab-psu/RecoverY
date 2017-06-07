@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f9849446-3198-4695-9e4a-f17ba8347ae3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency/run_dsk.sh" afterPath="$PROJECT_DIR$/dependency/run_dsk.sh" />
     </list>
     <ignored path="RecoverY.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,8 +97,8 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor vertical-scroll-proportion="0.41265476">
-                <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+              <first_editor vertical-scroll-proportion="0.5502063">
+                <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -119,8 +120,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="119" />
-    <option name="y" value="110" />
+    <option name="y" value="23" />
     <option name="width" value="1358" />
     <option name="height" value="877" />
   </component>
@@ -218,7 +218,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="119" y="110" width="1358" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1358" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -362,8 +362,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.41265476">
-            <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+          <first_editor vertical-scroll-proportion="0.5502063">
+            <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
             <folding />
           </first_editor>
           <second_editor />

@@ -18,7 +18,7 @@ time dsk-v2.2.0-bin-Linux/bin/dsk -file $R1_fsY_reads -abundance-min 0 -kmer-siz
 
 time dsk-v2.2.0-bin-Linux/bin/h5dump -y -d dsk/histogram R1_dsk.h5 | grep "^\ *[0-9]" | tr -d " " | tr -d "," | paste - - > R1_dsk.histo
 
-time dsk-v2.2.0-bin-Linux/bin/dsk2ascii -file R1_dsk -out pre_Threshold_reference_table  -verbose 0
+time dsk-v2.2.0-bin-Linux/bin/dsk2ascii -file R1_dsk -out kmer_counts_from_dsk -verbose 0
 
 
 rm -rf dsk_output
