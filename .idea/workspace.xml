@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9849446-3198-4695-9e4a-f17ba8347ae3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency/run_dsk.sh" afterPath="$PROJECT_DIR$/dependency/run_dsk.sh" />
-    </list>
+    <list default="true" id="f9849446-3198-4695-9e4a-f17ba8347ae3" name="Default" comment="" />
     <ignored path="RecoverY.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,7 +117,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="118" />
+    <option name="y" value="31" />
     <option name="width" value="1358" />
     <option name="height" value="877" />
   </component>
@@ -218,7 +216,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1358" height="877" extended-state="0" />
+    <frame x="118" y="31" width="1358" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

@@ -56,9 +56,9 @@ The input folder and file names can be changed by the user within the program.
 The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
 
     cd dependency
-    ./run_dsk.sh <r1.fastq>
+    ./run_dsk.sh <FASTQ_FILE>
 
-In this case, FASTQ_FILE_TO_BE_KMERIZED is r1.fastq. 
+In this case, FASTQ_FILE is r1.fastq. 
 The kmer_counts table will be generated in ./dependency/tables/kmer_counts_from_dsk
 
 ### Output 
