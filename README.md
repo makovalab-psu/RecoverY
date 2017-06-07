@@ -20,6 +20,7 @@ Important parameters for the user to choose are :
 - usually optimal in the range [20, 50] for Illumina 150x150 bp reads
 
 
+
 ### Installation 
 
 	git clone https://github.com/makovalab-psu/RecoverY
@@ -47,6 +48,15 @@ Note that currently RecoverY expects the folder to be named "data".
 
 The input folder and filenames can be changed by the user within the program. 
 
+### Generating k-mer counts with DSK
+
+The ./dependency folder contains a DSK binary and associated scripts that help generate k-mer counts required for RecoverY. Usage is as follows :
+
+    cd dependency
+    ./run_dsk.sh <r1.fastq>
+
+In this case, FASTQ_FILE_TO_BE_KMERIZED is r1.fastq. 
+The kmer_counts table will be generated in ./dependency/tables
 
 ### Output 
 
