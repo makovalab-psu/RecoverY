@@ -29,7 +29,10 @@ Important parameters for the user to choose are :
 
 ### Dependencies 
 
-Numpy and Biopython
+The latest DSK binary (v2.2.0 for Linux) is provided in the dependency folder. 
+See https://gatb.inria.fr/software/dsk/ for alternate versions. 
+    
+Numpy and Biopython can be installed as follows :
 
     pip install numpy
     pip install biopython
@@ -46,11 +49,11 @@ Note that currently RecoverY expects the folder to be named "data".
 	kmers_from_reads : kmer counts from DSK for r1.fastq
 	trusted_kmers : kmer counts from DSK for human Y single copy genes
 
-The input folder and filenames can be changed by the user within the program. 
+The input folder and file names can be changed by the user within the program. 
 
 ### Generating k-mer counts with DSK
 
-The ./dependency folder contains a DSK binary and associated scripts that help generate k-mer counts required for RecoverY. Usage is as follows :
+The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
 
     cd dependency
     ./run_dsk.sh <r1.fastq>
