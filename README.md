@@ -36,7 +36,8 @@ Numpy and Biopython
 
 ### Input
 
-The following input files are required in ./data folder
+The following input files are required in ./data folder. 
+Note that currently RecoverY expects the folder to be named "data".
     	
 	
 	r1.fastq : Enriched raw reads (first in pair) 
@@ -65,7 +66,8 @@ It can be used to test if RecoverY runs to completion.
 
 ### Scripts 
 
-The following scripts are included with this distribution of RecoverY
+The following scripts are included with this distribution of RecoverY, and are automatically run by recovery.py as part of the pipeline. Users may consider them separately for custom needs if required. 
+
 	
 **kmers.py** 
 	
