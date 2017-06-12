@@ -59,7 +59,9 @@ The ./dependency folder contains a DSK binary and a script that help generate k-
     ./run_dsk.sh <FASTQ_FILE>
 
 In this case, FASTQ_FILE is r1.fastq. 
-The kmer_counts table will be generated in ./dependency/tables/kmer_counts_from_dsk
+The kmer_counts table will be generated in 
+
+    ./dependency/dsk_output/kmer_counts_from_dsk
 
 ### Output 
 
@@ -86,7 +88,8 @@ Matplotlib and Seaborn are required to generate k-mer plots.
 
 After installation, please un-comment the following line from recoverY.py :
 
-           plot_kmers.plot_kmers()
+           print "Generating kmer plot"
+	   plot_kmers.plot_kmers()
 
 
 ### Scripts 
