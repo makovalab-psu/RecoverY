@@ -88,8 +88,8 @@ Matplotlib and Seaborn are required to generate k-mer plots.
 
 After installation, please un-comment the following line from recoverY.py :
 
-           print "Generating kmer plot"
-	   plot_kmers.plot_kmers()
+            print "Generating kmer plot"
+	    plot_kmers.plot_kmers()
 
 
 ### Scripts 
