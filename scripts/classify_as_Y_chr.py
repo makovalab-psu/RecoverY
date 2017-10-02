@@ -3,32 +3,26 @@ import os
 from Bio import SeqIO
 
 
-def classify_as_Y_chr(kmer_size=25, strictness=20):
+def classify_as_Y_chr(ip_file, kmer_size=25, strictness=20):
     """
     :param kmer_size: 25
     :param strictness: 20
     :return: 1 and create file R1
     """
+    print "classify has been called on file : "
+    Ymer_table = "data/Ymer_table"
+    ip_tmp_dir = "tmp_r1_pieces/"
+    op_tmp_dir = "op_tmp_r1_pieces_after_classify/"
+    op_file = op_tmp_dir + ip_file + "_op_r1"
+    ip_file = ip_tmp_dir + ip_file
+    print ip_file
 
-    ip_dir = "data"
-    ip_file = ip_dir + "/r1.fastq"
-    Ymer_table = ip_dir + "/Ymer_table"
-    op_dir = "output"
-    op_file = op_dir + "/op_r1.fastq"
 
     print "Running classify_reads() to shortlist fwd Y-reads from ip dataset"
 
     print "First making Ymer set ... this might take a while"
     Ymer_set = kmers.make_set_from_kmer_abundance(Ymer_table, kmer_size)
     print "Ymer set ready, time to classify"
-
-    # if folder "output" doesn't exist, create the folder
-    if not os.path.exists(op_dir):
-        os.makedirs(op_dir)
-
-    # if file op_r1.fastq exists, remove it
-    if os.path.isfile(op_file):
-        os.remove(op_file)
 
     # now that you have a fresh op_file ...
     with open(ip_file, "r") as ip_reads, open(op_file, "a") as op_reads:

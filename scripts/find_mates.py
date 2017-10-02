@@ -14,15 +14,17 @@ def clean_record_id(seq_record):
     return clean_id
 
 
-def find_mates():
+def find_mates(ref_r2_file_piece):
     """
     find mates for all the post RecoverY R1 reads
     """
-    ref_ip_dir = "data"
-    ref_ip_file = ref_ip_dir + "/r2.fastq"
-    op_dir = "output"
-    r1_file = op_dir + "/op_r1.fastq"
-    r2_file = op_dir + "/op_r2.fastq"
+    ref_ip_dir = "tmp_r2_pieces"
+    ref_ip_file = ref_ip_dir + "/" + ref_r2_file_piece
+    to_lookup_dir = "op_tmp_r1_pieces_after_classify"
+    classed_as_Y_ip_r1_file = ref_r2_file_piece + "_op_r1"
+    r1_file = to_lookup_dir + "/" + classed_as_Y_ip_r1_file
+    op_dir = "op_tmp_r2_pieces_after_mate_finding"
+    r2_file = op_dir + "/" + classed_as_Y_ip_r1_file + "_r2.fastq"
 
     print "Running find_mates () to find mates for fwd Y-reads"
 
