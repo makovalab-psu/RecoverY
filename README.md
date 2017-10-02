@@ -81,9 +81,12 @@ Subsequently, RecoverY can be run as :
 	cd ../
 	python recoverY.py
 	
-Results :
+**Results :**
 
-As the data/r1.fastq and data/r2.fastq were generated from hg38 using wg-sim, each FASTQ record header has the chromosome of origin for any given read. Using grep and wc commands, one can check if RecoverY has correctly retrieved most of the Y-reads. 
+The data/r1.fastq and data/r2.fastq were generated from hg38 using wg-sim.
+Thus, each FASTQ record header has the chromosome of origin for a given read. 
+
+Using grep and wc commands, one can check if RecoverY has correctly retrieved most of the Y-reads. 
 
 	grep "@chrY" data/r1.fastq | wc -l
 	grep "@chrY" output/op_r1.fastq | wc -l
