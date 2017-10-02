@@ -78,6 +78,11 @@ These are the Y-reads files produced by RecoverY.
 The data folder contains an example reads dataset and kmer tables. 
 It can be used to test if RecoverY runs to completion. 
 
+Before running recoverY.py, please navigate to the data folder and un-compress the tar.xz file : 
+
+	cd data/
+	tar xf kmers_from_reads.tar.xz
+
 
 ### Generating k-mer plots 
 
