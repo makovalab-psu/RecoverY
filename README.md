@@ -55,17 +55,6 @@ Note that currently RecoverY expects the folder to be named "data".
 
 The input folder and file names can be changed by the user within the program. 
 
-### Generating k-mer counts with DSK
-
-The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
-
-    cd dependency
-    ./run_dsk.sh <FASTQ_FILE>
-
-In this case, FASTQ_FILE is r1.fastq. 
-The kmer_counts table will be generated in 
-
-    ./dependency/dsk_output/kmer_counts_from_dsk
 
 ### Output 
 
@@ -86,6 +75,19 @@ Before running recoverY.py, please navigate to the data folder and un-compress t
 
 	cd data/
 	tar xf kmers_from_reads.tar.xz
+
+
+### Generating k-mer counts with DSK
+
+The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
+
+    cd dependency
+    ./run_dsk.sh <FASTQ_FILE>
+
+In this case, FASTQ_FILE is r1.fastq. 
+The kmer_counts table will be generated in 
+
+    ./dependency/dsk_output/kmer_counts_from_dsk
 
 
 ### Generating k-mer plots 
