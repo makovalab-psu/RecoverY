@@ -20,6 +20,10 @@ Important parameters for the user to choose are :
 - usually optimal in the range [20, 50] for Illumina 150x150 bp reads
 
 
+**num_processors** :
+- the # of processors available to RecoverY
+- currently set to 8
+
 
 ### Installation 
 
