@@ -76,6 +76,11 @@ Before running recoverY.py, please navigate to the data folder and un-compress t
 	cd data/
 	tar xf kmers_from_reads.tar.xz
 
+Subsequently, RecoverY can be run as : 
+
+	cd ../
+	python recoverY.py
+	
 
 ### Generating k-mer counts with DSK
 
