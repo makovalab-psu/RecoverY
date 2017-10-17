@@ -35,7 +35,8 @@ Important parameters for the user to choose are :
 
 The latest DSK binary (v2.2.0 for Linux) is provided in the dependency folder. 
 See https://gatb.inria.fr/software/dsk/ for alternate versions. 
-    
+You do not need to install DSK separately. 
+
 Numpy and Biopython can be installed as follows :
 
     pip install numpy
