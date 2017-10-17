@@ -2,53 +2,18 @@
 
 RecoverY is a tool for shortlisting enriched reads from a sequencing dataset, based on k-mer abundance. Specifically, it can be used for isolating Y-specific reads from a Y flow-sorted dataset.
 
-### Usage  
+## Usage 
 
-    python recoverY.py
-  	
-Important parameters for the user to choose are : 
+To run RecoverY with default parameters, 
 
-
-**kmer-size** : 
-- the size of k used while iterating through every read 
-- this must be the same as DSK's kmer-size
-- usually optimal in the range [25, 31] for Illumina 150x150 bp reads
-
-
-**strictness** : 
-- the # of successful matches to the Ymer table required per read, before classifying a read as Y-specific 
-- usually optimal in the range [20, 50] for Illumina 150x150 bp reads
-
-
-**num_processors** :
-- the # of processors available to RecoverY
-- currently set to 8
-
-
-### Installation 
-
-	git clone https://github.com/makovalab-psu/RecoverY
 	cd RecoverY
-
-
-### Dependencies 
-
-The latest DSK binary (v2.2.0 for Linux) is provided in the dependency folder. 
-See https://gatb.inria.fr/software/dsk/ for alternate versions. 
-You do not need to install DSK separately. 
-
-Numpy and Biopython can be installed as follows :
-
-    pip install numpy
-    pip install biopython
-    
+	python recoverY.py
 
 ### Input
 
 The following input files are required in ./data folder. 
 Note that currently RecoverY expects the folder to be named "data".
-    	
-	
+    		
 	r1.fastq : Enriched raw reads (first in pair) 
 	r2.fastq : Enriched raw reads (second in pair) 
 	kmers_from_reads : kmer counts from DSK for r1.fastq
@@ -67,7 +32,72 @@ The ./output folder contains :
 These are the Y-reads files produced by RecoverY.  
 
 
-### Example
+### Parameters
+Important parameters for the user to choose are : 
+
+
+**kmer-size** : 
+- the size of k used while iterating through every read 
+- this must be the same as DSK's kmer-size
+- usually optimal in the range [25, 31] for Illumina 150x150 bp reads
+
+
+**strictness** : 
+- the # of successful matches to the Ymer table required per read, before classifying a read as Y-specific 
+- usually optimal in the range [20, 50] for Illumina 150x150 bp reads
+
+
+**num_processors** :
+- the # of processors available to RecoverY
+- currently set to 8
+
+### Generating k-mer counts with DSK
+
+The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
+
+    cd dependency
+    ./run_dsk.sh <FASTQ_FILE>
+
+In this case, FASTQ_FILE is r1.fastq. 
+The kmer_counts table will be generated in 
+
+    ./dependency/dsk_output/kmer_counts_from_dsk
+
+
+### Generating k-mer plots 
+
+Make sure that Matplotlib and Seaborn packages are installed as described below, and then un-comment the following line from recoverY.py prior to execution:
+
+	print "Generating kmer plot"
+	plot_kmers.plot_kmers()
+
+
+
+## Installation 
+
+### Download
+
+	git clone https://github.com/makovalab-psu/RecoverY
+	
+
+### Dependencies 
+
+RecoverY requires the numpy and biopython python packages in order to run.
+Additionally, if you would like to generate certain visual plots, RecoverY needs the matplotlib and seaborn packages for python.
+However, matplotlib and seaborn are not required for RecoverY to run. These packages can be installed as follows:
+
+    pip install numpy
+    pip install biopython
+    pip install matplotlib
+    pip install seaborn
+
+RecoverY also uses the k-mer counter DSK. 
+However, the latest DSK binary (v2.2.0 for Linux) is provided in the dependency folder. 
+Therefore, DSK does not need to be installed separately. 
+If alternate versions or functionality of DSK is desired, see https://gatb.inria.fr/software/dsk/.
+
+
+## Example
 
 The data folder contains an example reads dataset and kmer tables. 
 It can be used to test if RecoverY runs to completion. 
@@ -93,31 +123,6 @@ Using grep and wc commands, one can check if RecoverY has correctly retrieved mo
 	grep "@chrY" output/op_r1.fastq | wc -l
 
 
-
-### Generating k-mer counts with DSK
-
-The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
-
-    cd dependency
-    ./run_dsk.sh <FASTQ_FILE>
-
-In this case, FASTQ_FILE is r1.fastq. 
-The kmer_counts table will be generated in 
-
-    ./dependency/dsk_output/kmer_counts_from_dsk
-
-
-### Generating k-mer plots 
-
-Matplotlib and Seaborn are required to generate k-mer plots. 
-
-           pip install matplotlib
-           pip install seaborn
-
-After installation, please un-comment the following line from recoverY.py :
-
-	print "Generating kmer plot"
-	plot_kmers.plot_kmers()
 
 
 ### Scripts 
