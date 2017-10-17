@@ -35,21 +35,10 @@ These are the Y-reads files produced by RecoverY.
 ### Parameters
 Important parameters for the user to choose are : 
 
+- kmer-size (default: ?): k-mer size used for classifying reads. This must be the same as DSK's k-mer-size. We recommend a value between 25 and 31 for Illumina 150x150 bp reads
+- strictness (default: ?) : the # of k-mers a read must match to the Ymer table in order to be classified as coming from the Y. We recommend a value between 20 and 50 for Illumina 150x150 bp reads.
+- num\_threads (default: 2): The number of threads that RecoverY should use
 
-**kmer-size** : 
-- the size of k used while iterating through every read 
-- this must be the same as DSK's kmer-size
-- usually optimal in the range [25, 31] for Illumina 150x150 bp reads
-
-
-**strictness** : 
-- the # of successful matches to the Ymer table required per read, before classifying a read as Y-specific 
-- usually optimal in the range [20, 50] for Illumina 150x150 bp reads
-
-
-**num_processors** :
-- the # of processors available to RecoverY
-- currently set to 8
 
 ### Generating k-mer counts with DSK
 
@@ -155,5 +144,10 @@ This program is released under the MIT License. Please see LICENSE.md for detail
 
 
 ### Citation
-Please cite this Github repository if you use this tool in your research. Thanks !
-https://github.com/makovalab-psu/RecoverY
+If you use RecoverY in your research, please cite 
+
+[RecoverY : K-mer based read classification for Y-chromosome specific sequencing and assembly](https://doi.org/10.1101/148114), 
+
+Samarth Rangavittal, Robert S. Harris, Monika Cechova, Marta Tomaszkiewicz, Rayan Chikhi, Kateryna Makova, Paul Medvedev
+
+bioRxiv 2017.
