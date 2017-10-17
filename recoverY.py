@@ -11,7 +11,7 @@ def main():
     """
     
     # user may set number of processors according to system
-    num_processors = 8
+    num_processors = 2
     print "RecoverY starting with number of processors : ", num_processors 
     
     op_dir = "output"
