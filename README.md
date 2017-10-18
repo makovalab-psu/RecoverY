@@ -47,7 +47,7 @@ The ./dependency folder contains DSK binaries and a script that helps generate k
     cd dependency
     ./run_dsk_Linux.sh <FASTQ_file> <kmer_size>
 
-In this case, FASTQ_file is r1.fastq and kmer_size is recommended to be 25.  
+In this case, FASTQ_file can be data/r1.fastq and kmer_size is recommended to be 25.  
 The kmer_counts table will be generated in :
 
     ./dependency/dsk_output/kmer_counts_from_dsk
