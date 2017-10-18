@@ -80,10 +80,9 @@ However, matplotlib and seaborn are not required for RecoverY to run. These pack
     pip install matplotlib
     pip install seaborn
 
-RecoverY also uses the k-mer counter DSK. 
-However, the latest DSK binary (v2.2.0 for Linux) is provided in the dependency folder. 
-Therefore, DSK does not need to be installed separately. 
-If alternate versions or functionality of DSK is desired, see https://gatb.inria.fr/software/dsk/.
+RecoverY also uses the k-mer counter DSK. The latest DSK binary (v2.2.0 for Linux 64 bit) is provided in the dependency folder. If you are using Linux 64 bit, DSK need not be installed, and you may use the binary as provided.  
+
+For other operating systems, or if alternate versions or functionality of DSK is desired, see https://gatb.inria.fr/software/dsk/.
 
 
 ## Example
