@@ -138,6 +138,18 @@ The following scripts are included with this distribution of RecoverY, and are a
 	input : all raw reads (second in pair) and Y-specific reads accoding to RecoverY algorithm (first in pair)
 	output : Y-specific reads according to RecoverY algorithm (second in pair)
 
+### Trusted kmers 
+
+The trusted_kmers file consists of all the single copy k-mers obtained by k-merizing known single copy regions. These are obtained by running DSK on X-degenerate gene sequences from human Y, and from these, extracting only k-mers with a count of 1. These trusted k-mers are used as a proxy to determine the abundance threshold for Y-mers. 
+
+The trusted kmers file consists of (kmer_sequence,count) pairs separated by a whitespace. 
+	
+	AAAAAAAAAAAAAAAAGAAAAACAA 1
+	AAAAAAAAAAAAAAACAAGCTGAAT 1
+	AAAAAAAAAAAAAAAGAAAAACAAA 1
+	AAAAAAAAAAAAAACAAGCTGAATG 1
+	AAAAAAAAAAAAAAGAAAAACAAAA 1
+	
 
 ### License
 This program is released under the MIT License. Please see LICENSE.md for details
