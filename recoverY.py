@@ -12,9 +12,9 @@ def main():
     r1.fastq, r2.fastq, kmers_from_reads, trusted_kmers
     """
     
-    # user may set number of processors according to system
-    num_processors = 2
-    print "RecoverY starting with number of processors : ", num_processors 
+    # user may set number of threads according to system
+    num_threads = 2
+    print "RecoverY starting with number of processors : ", num_threads 
     
     op_dir = "output"
     op_r1_file_name = "op_r1.fastq"
@@ -67,21 +67,21 @@ def main():
     #plot_kmers.plot_kmers()
 
     print "Chopping input R1 reads into smaller files..."
-    list_of_ip_files_r1 = kmers.fastq_chopper(num_processors, "data/r1.fastq", "tmp_r1_pieces")
+    list_of_ip_files_r1 = kmers.fastq_chopper(num_threads, "data/r1.fastq", "tmp_r1_pieces")
     for file_name in list_of_ip_files_r1 :
         print file_name
 
     print "Chopping input R2 reads into smaller files..."
-    list_of_ip_files_r2 = kmers.fastq_chopper(num_processors, "data/r2.fastq", "tmp_r2_pieces")
+    list_of_ip_files_r2 = kmers.fastq_chopper(num_threads, "data/r2.fastq", "tmp_r2_pieces")
     for file_name in list_of_ip_files_r2 :
         print file_name
 
     print "Classifying reads in parallel..."
-    pool = mp.Pool(processes=num_processors)
+    pool = mp.Pool(processes=num_threads)
     pool.map(classify_as_Y_chr.classify_as_Y_chr, [file_name for file_name in list_of_ip_files_r1])
 
     print "Finding mates in parallel..."
-    pool = mp.Pool(processes=num_processors)
+    pool = mp.Pool(processes=num_threads)
     pool.map(find_mates.find_mates, [file_name for file_name in list_of_ip_files_r2])
     
     
