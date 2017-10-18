@@ -1,4 +1,6 @@
-from scripts import kmerPaint, classify_as_Y_chr, find_mates, plot_kmers, kmers
+from scripts import kmerPaint, classify_as_Y_chr, find_mates, kmers
+# un-comment line below if you have installed matplotlib
+# from scripts import plot_kmers
 import multiprocessing as mp
 import os
 import shutil
