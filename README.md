@@ -42,13 +42,13 @@ Important parameters for the user to choose are :
 
 ### Generating k-mer counts with DSK
 
-The ./dependency folder contains a DSK binary and a script that help generate k-mer counts required for RecoverY. Usage is as follows :
+The ./dependency folder contains DSK binaries and a script that helps generate k-mer counts required for RecoverY. There are separate binaries for Linux 64 bit and Mac OSX. Usage is as follows (example shown below is for a Linux system) :
 
     cd dependency
-    ./run_dsk.sh <FASTQ_FILE>
+    ./run_dsk_Linux.sh <FASTQ_file> <kmer_size>
 
-In this case, FASTQ_FILE is r1.fastq. 
-The kmer_counts table will be generated in 
+In this case, FASTQ_file is r1.fastq and kmer_size is recommended to be 25.  
+The kmer_counts table will be generated in :
 
     ./dependency/dsk_output/kmer_counts_from_dsk
 
@@ -80,7 +80,7 @@ However, matplotlib and seaborn are not required for RecoverY to run. These pack
     pip install matplotlib
     pip install seaborn
 
-RecoverY also uses the k-mer counter DSK. The latest DSK binary (v2.2.0 for Linux 64 bit) is provided in the dependency folder. Thus, if you are using Linux 64 bit, DSK need not be installed, and you may use the binary as provided.  
+RecoverY also uses the k-mer counter DSK. The latest DSK binaries (v2.2.0 for Linux 64 bit and v2.2.0 for Mac OSX) are provided in the dependency folder. Thus, if you are using either of these operating systems, DSK need not be installed, and you may use the binaries as provided.  
 
 For other operating systems, or if alternate versions or functionality of DSK is desired, see https://gatb.inria.fr/software/dsk/.
 
