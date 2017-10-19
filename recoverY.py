@@ -15,10 +15,8 @@ def main():
     parser = argparse.ArgumentParser(description='RecoverY selects Y-specific reads from an enriched data set')
     parser.add_argument('--read_length', help='Set read length (defaults to 150)', required=False)
     parser.add_argument('--kmer_size', help='Set kmer size (defaults to 25)', required=False)
-    parser.add_argument('--Ymer_match_threshold', help='Set Y-mer match threshold (defaults to )'
-                        , required=False)
-    parser.add_argument('--threads', help='Set number of threads for RecoverY (default is calculated by formula : '
-                                          '0.4(l-k+1-2kl/100))', required=False)
+    parser.add_argument('--Ymer_match_threshold', help='Set Y-mer match threshold (default is calculated by formula : 0.4(l-k+1-2kl/100))', required=False)
+    parser.add_argument('--threads', help='Set number of threads for RecoverY (defaults to 2)', required=False)
     parser.add_argument('--plots', help='Set this to True if you have matplotlib & seaborn (defaults to False)',
                         action='store_true', required=False)
     args = vars(parser.parse_args())
