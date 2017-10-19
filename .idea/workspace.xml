@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="55ab1f0f-84eb-43eb-a3f9-ed42c7ff8f7b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/recoverY.py" afterPath="$PROJECT_DIR$/recoverY.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="RecoverY.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,15 +24,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="recoverY.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recoverY.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recoverY.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07570022">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor vertical-scroll-proportion="0.53670084">
+                <caret line="121" column="16" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownFxPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -45,6 +61,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/recoverY.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -143,7 +160,13 @@
       <option name="project" value="LOCAL" />
       <updated>1508430526135</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="--plots stores True if invoked">
+      <created>1508430715717</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1508430715717</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -176,7 +199,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated run_dsk with kmer_size support and Linux/Mac versions" />
     <MESSAGE value="added --plots as cmd line param, no need for un-commenting now" />
-    <option name="LAST_COMMIT_MESSAGE" value="added --plots as cmd line param, no need for un-commenting now" />
+    <MESSAGE value="--plots stores True if invoked" />
+    <option name="LAST_COMMIT_MESSAGE" value="--plots stores True if invoked" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -223,12 +247,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recoverY.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07570022">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.53670084">
+            <caret line="121" column="16" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
