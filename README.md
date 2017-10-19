@@ -54,10 +54,25 @@ The ./dependency folder contains DSK binaries and a script that helps generate k
     cd dependency
     ./run_dsk_Linux.sh <FASTQ_file> <kmer_size>
 
-In this case, FASTQ_file can be data/r1.fastq and kmer_size is recommended to be 25.  
-The kmer_counts table will be generated in :
 
-    ./dependency/dsk_output/kmer_counts_from_dsk
+If the k-mer counts file for raw reads (r1.fastq) is not already provided, the user may need to generate k-mer counts manually using DSK. To generate k-mer counts with DSK, the following steps are needed : 
+
+    cd dependency 
+    ln -s ../data/r1.fastq   # make sure the correct reads file is provided to DSK
+    ./run_dsk_Linux.sh r1.fastq 25  
+
+
+The kmer\_counts table will be generated in :
+
+    dependency/dsk_output/kmer_counts_from_reads
+
+
+This file can be copied or linked to the data folder so that RecoverY can use it : 
+
+    cd ../data
+    ln -s ../dependency/kmer_counts_from_reads kmer_counts_from_reads
+
+
 
 
 ### Generating k-mer plots 
