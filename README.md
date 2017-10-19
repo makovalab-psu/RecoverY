@@ -73,6 +73,11 @@ Important parameters for the user to choose are :
 - threads (default: 2): The number of threads that RecoverY should use. Can be set on the command line using --threads <THREADS>
 
 
+Example usage can be, 
+
+	python recoverY --threads 2
+	
+
 ### Generating k-mer counts with DSK
 
 The ./dependency folder contains DSK binaries and a script that helps generate k-mer counts required for RecoverY. There are separate binaries for Linux 64 bit and Mac OSX. Usage is as follows (example shown below is for a Linux system) :
