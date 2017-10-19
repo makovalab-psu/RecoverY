@@ -1,4 +1,5 @@
 from scripts import kmerPaint, classify_as_Y_chr, find_mates, kmers
+import argparse
 # un-comment line below if you have installed matplotlib
 # from scripts import plot_kmers
 import multiprocessing as mp
@@ -12,8 +13,16 @@ def main():
     r1.fastq, r2.fastq, kmers_from_reads, trusted_kmers
     """
     
-    # user may set number of threads according to system
-    num_threads = 2
+    parser = argparse.ArgumentParser(description='RecoverY selects Y-specific reads from an enriched data set')
+    parser.add_argument('--threads', help='Set number of threads for RecoverY (defaults to 2)', required=False)
+    args = vars(parser.parse_args())
+
+    # set num_threads from argument or using default here
+    if not args['threads']:
+        num_threads = 2
+    else:
+        num_threads = int(args['threads'])
+
     print "RecoverY starting with number of processors : ", num_threads 
     
     op_dir = "output"
