@@ -14,7 +14,7 @@ def main():
     
     parser = argparse.ArgumentParser(description='RecoverY selects Y-specific reads from an enriched data set')
     parser.add_argument('--read_length', help='Set read length (defaults to 150)', required=False)
-    parser.add_argument('--k_size', help='Set k-mer size (defaults to 25)', required=False)
+    parser.add_argument('--kmer_size', help='Set kmer size (defaults to 25)', required=False)
     parser.add_argument('--Ymer_match_threshold', help='Set Y-mer match threshold (defaults to )'
                         , required=False)
     parser.add_argument('--threads', help='Set number of threads for RecoverY (default is calculated by formula : '
@@ -30,14 +30,14 @@ def main():
         read_len = int(args['read_length'])
 
     # set kmer_size from argument or using default here
-    if not args['k_size']:
-        kmer_size = 25
+    if not args['kmer_size']:
+        k_size = 25
     else:
-        kmer_size = int(args['k_size'])
+        k_size = int(args['kmer_size'])
 
     # set match_threshold from argument or using default here
     if not args['Ymer_match_threshold']:
-        strictness = int(0.4 * (read_len - kmer_size + 1 - (2*kmer_size*read_len/100)))
+        strictness = int(0.4 * (read_len - k_size + 1 - (2*k_size*read_len/100)))
     else:
         strictness = int(args['Ymer_match_threshold'])
 
@@ -50,7 +50,7 @@ def main():
     print "RecoverY starting with : "
     print "number of processors : ", num_threads
     print "read length : ", read_len
-    print "kmer-size : ", kmer_size
+    print "kmer-size : ", k_size
     print "Y-mer match threshold : ", strictness
     
     op_dir = "output"
@@ -90,7 +90,7 @@ def main():
         os.remove(op_tmp_dir + '/' + f)
 
     print "Started RecoverY"
-    kmerPaint.kmerPaint(kmer_size)
+    kmerPaint.kmerPaint(k_size)
 
     # plot if needed
     if args['plots']:
@@ -106,7 +106,7 @@ def main():
 
     print "Classifying reads in parallel..."
     pool = mp.Pool(processes=num_threads)
-    pool.map(partial(classify_as_Y_chr.classify_as_Y_chr, k=kmer_size, strict=strictness),
+    pool.map(partial(classify_as_Y_chr.classify_as_Y_chr, k=k_size, strict=strictness),
              [file_name for file_name in list_of_ip_files_r1])
 
     print "Finding mates in parallel..."

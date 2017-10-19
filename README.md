@@ -66,7 +66,7 @@ These are the Y-reads files produced by RecoverY.
 ### Parameters
 Important parameters for the user to choose are : 
 
-- k\_size (default: 25): k-mer size used for classifying reads. This must be the same as DSK's k-mer-size. We recommend a value between 25 and 31 for Illumina 150x150 bp reads. This value is used for calculating Ymer\_match\_threshold below
+- kmer\_size (default: 25): kmer size used for classifying reads. This must be the same as DSK's k-mer-size. We recommend a value between 25 and 31 for Illumina 150x150 bp reads. This value is used for calculating Ymer\_match\_threshold below
 
 - read\_length (default:150) : The length of longest un-trimmed read input to RecoverY. This value is used for calculating Ymer\_match\_threshold below
 	
