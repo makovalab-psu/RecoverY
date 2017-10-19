@@ -9,7 +9,7 @@ To run RecoverY with default parameters,
 	cd RecoverY
 	python recoverY.py
 
-For help regarding command line parameters, 
+For help regarding usage and command line parameters, 
 
    	python recoverY.py --help 
 	
