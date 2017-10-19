@@ -13,6 +13,8 @@ def main():
     
     parser = argparse.ArgumentParser(description='RecoverY selects Y-specific reads from an enriched data set')
     parser.add_argument('--threads', help='Set number of threads for RecoverY (defaults to 2)', required=False)
+    parser.add_argument('--plots', help='Set this to True if you have matplotlib & seaborn (defaults to False)',
+                        action='store_false', required=False)
     args = vars(parser.parse_args())
 
     # set num_threads from argument or using default here
@@ -69,10 +71,11 @@ def main():
     #print "Running kmerPaint"
     kmerPaint.kmerPaint()
 
-    #Un-comment the lines below if you have matplotlib and seaborn
-    #from scripts import plot_kmers
-    #print "Generating kmer plot"
-    #plot_kmers.plot_kmers()
+    # plot if needed
+    if args['plots']:
+        from scripts import plot_kmers
+        print "Generating kmer plot"
+        plot_kmers.plot_kmers()
 
     print "Chopping input R1 reads into smaller files..."
     list_of_ip_files_r1 = kmers.fastq_chopper(num_threads, "data/r1.fastq", "tmp_r1_pieces")
