@@ -77,7 +77,7 @@ Important parameters for the user to choose are :
 
 Example usage can be, 
 
-	python recoverY --threads 2
+	python recoverY --read_length 250 --k_size 31 --Ymer_match_threshold 50 --threads 8
 	
 
 ### Generating k-mer counts with DSK
