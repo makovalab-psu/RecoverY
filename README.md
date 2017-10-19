@@ -95,13 +95,13 @@ If the k-mer counts file for raw reads (r1.fastq) is not already provided, the u
 
 The kmer\_counts table will be generated in :
 
-    dependency/dsk_output/kmer_counts_from_reads
+    dependency/dsk_output/kmers_from_reads
 
 
 This file can be copied or linked to the data folder so that RecoverY can use it : 
 
     cd ../data
-    ln -s ../dependency/kmer_counts_from_reads kmer_counts_from_reads
+    ln -s ../dependency/kmers_from_reads 
 
 
 
