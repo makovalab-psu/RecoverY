@@ -12,10 +12,33 @@ def main():
     """
     
     parser = argparse.ArgumentParser(description='RecoverY selects Y-specific reads from an enriched data set')
-    parser.add_argument('--threads', help='Set number of threads for RecoverY (defaults to 2)', required=False)
+    parser.add_argument('--read_length', help='Set read length (defaults to 150)', required=False)
+    parser.add_argument('--k_size', help='Set k-mer size (defaults to 25)', required=False)
+    parser.add_argument('--Ymer_match_threshold', help='Set Y-mer match threshold (defaults to )'
+                        , required=False)
+    parser.add_argument('--threads', help='Set number of threads for RecoverY (default is calculated by formula : '
+                                          '0.4(l-k+1-2kl/100))', required=False)
     parser.add_argument('--plots', help='Set this to True if you have matplotlib & seaborn (defaults to False)',
                         action='store_true', required=False)
     args = vars(parser.parse_args())
+
+    # set read_len from argument or using default here
+    if not args['read_length']:
+        read_len = 150
+    else:
+        read_len = int(args['read_length'])
+
+    # set kmer_size from argument or using default here
+    global kmer_size
+    if not args['k_size']:
+        kmer_size = 25
+    else :
+        kmer_size = int(args['k_size'])
+
+    # set match_threshold from argument or using default here
+    global strictness
+    if not args['Ymer_match_threshold']:
+        strictness = int(0.4 * (read_len - kmer_size + 1 - (2*kmer_size*read_len/100)))
 
     # set num_threads from argument or using default here
     if not args['threads']:
@@ -23,7 +46,8 @@ def main():
     else:
         num_threads = int(args['threads'])
 
-    print "RecoverY starting with number of processors : ", num_threads 
+    print "RecoverY starting with number of processors : ", num_threads, "read length : ", read_len, \
+        "kmer-size : ", kmer_size, "and Y-mer match threshold : ", strictness
     
     op_dir = "output"
     op_r1_file_name = "op_r1.fastq"
@@ -69,7 +93,7 @@ def main():
     print "Using default of k=25, strictness=20, and input folder='data'"
 
     #print "Running kmerPaint"
-    kmerPaint.kmerPaint()
+    kmerPaint.kmerPaint(kmer_size)
 
     # plot if needed
     if args['plots']:
