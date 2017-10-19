@@ -32,8 +32,6 @@ def kmerPaint(kmer_size=25):
     if os.path.isfile(op_file):
         os.remove(op_file)
 
-    print "Started kmerPaint"
-
     print "Creating a set from trusted kmers"
     trusted_kmers_set = kmers.make_set_from_kmer_abundance(trusted_kmers, kmer_size)
 
@@ -44,15 +42,12 @@ def kmerPaint(kmer_size=25):
     trusted_dict_from_fsY_dict = defaultdict(int)
     for trusted in trusted_kmers_set:
         trusted_dict_from_fsY_dict[trusted] = fsY_kmers_dict[trusted]
-    print "Found abundances for all trusted kmers"
 
-    print "Finding the 5% threshold"
     all_abundances = [v for _, v in trusted_dict_from_fsY_dict.iteritems() if v > 0]
     all_abundances = np.array(all_abundances)
     threshold = np.percentile(all_abundances, 5)
     print "The 5% threshold is :", threshold
 
-    print "Creating an output file with new kmer_counts"
     # OPTIONAL : create an output file with new kmerCounts
     with open(op_file, "w") as output_handle:
         for k, v in trusted_dict_from_fsY_dict.iteritems():
@@ -60,8 +55,6 @@ def kmerPaint(kmer_size=25):
             output_handle.write(to_write)
 
     print "Making the Ymer_table"
-    # make the post-kmerPaint Ymer_table
-
     with open(reads_kmers) as reads_kmers_fp, open(reads_Ymers, "w") as reads_Ymers_fp:
         make_new_kmer_table(reads_kmers_fp, threshold, reads_Ymers_fp)
 

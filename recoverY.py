@@ -4,6 +4,7 @@ import multiprocessing as mp
 import os
 import shutil
 import glob
+from functools import partial
 
 def main():
     """
@@ -29,16 +30,16 @@ def main():
         read_len = int(args['read_length'])
 
     # set kmer_size from argument or using default here
-    global kmer_size
     if not args['k_size']:
         kmer_size = 25
-    else :
+    else:
         kmer_size = int(args['k_size'])
 
     # set match_threshold from argument or using default here
-    global strictness
     if not args['Ymer_match_threshold']:
         strictness = int(0.4 * (read_len - kmer_size + 1 - (2*kmer_size*read_len/100)))
+    else:
+        strictness = int(args['Ymer_match_threshold'])
 
     # set num_threads from argument or using default here
     if not args['threads']:
@@ -46,8 +47,11 @@ def main():
     else:
         num_threads = int(args['threads'])
 
-    print "RecoverY starting with number of processors : ", num_threads, "read length : ", read_len, \
-        "kmer-size : ", kmer_size, "and Y-mer match threshold : ", strictness
+    print "RecoverY starting with : "
+    print "number of processors : ", num_threads
+    print "read length : ", read_len
+    print "kmer-size : ", kmer_size
+    print "Y-mer match threshold : ", strictness
     
     op_dir = "output"
     op_r1_file_name = "op_r1.fastq"
@@ -85,14 +89,7 @@ def main():
     for f in file_list:
         os.remove(op_tmp_dir + '/' + f)
 
-
     print "Started RecoverY"
-    #print "Please specify kmer-size, strictness and data directory"
-
-    # declare defaults
-    print "Using default of k=25, strictness=20, and input folder='data'"
-
-    #print "Running kmerPaint"
     kmerPaint.kmerPaint(kmer_size)
 
     # plot if needed
@@ -103,17 +100,14 @@ def main():
 
     print "Chopping input R1 reads into smaller files..."
     list_of_ip_files_r1 = kmers.fastq_chopper(num_threads, "data/r1.fastq", "tmp_r1_pieces")
-    for file_name in list_of_ip_files_r1 :
-        print file_name
 
     print "Chopping input R2 reads into smaller files..."
     list_of_ip_files_r2 = kmers.fastq_chopper(num_threads, "data/r2.fastq", "tmp_r2_pieces")
-    for file_name in list_of_ip_files_r2 :
-        print file_name
 
     print "Classifying reads in parallel..."
     pool = mp.Pool(processes=num_threads)
-    pool.map(classify_as_Y_chr.classify_as_Y_chr, [file_name for file_name in list_of_ip_files_r1])
+    pool.map(partial(classify_as_Y_chr.classify_as_Y_chr, k=kmer_size, strict=strictness),
+             [file_name for file_name in list_of_ip_files_r1])
 
     print "Finding mates in parallel..."
     pool = mp.Pool(processes=num_threads)

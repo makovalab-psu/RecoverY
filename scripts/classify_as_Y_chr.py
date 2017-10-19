@@ -3,10 +3,10 @@ import os
 from Bio import SeqIO
 
 
-def classify_as_Y_chr(ip_file, kmer_size=25, strictness=20):
+def classify_as_Y_chr(ip_file, k=25, strict=20):
     """
-    :param kmer_size: 25
-    :param strictness: 20
+    :param k: 25
+    :param strict: 20
     :return: 1 and create file R1
     """
     print "classify has been called on file : "
@@ -21,7 +21,7 @@ def classify_as_Y_chr(ip_file, kmer_size=25, strictness=20):
     print "Running classify_reads() to shortlist fwd Y-reads from ip dataset"
 
     print "First making Ymer set ... this might take a while"
-    Ymer_set = kmers.make_set_from_kmer_abundance(Ymer_table, kmer_size)
+    Ymer_set = kmers.make_set_from_kmer_abundance(Ymer_table, k)
     print "Ymer set ready, time to classify"
 
     # now that you have a fresh op_file ...
@@ -29,7 +29,7 @@ def classify_as_Y_chr(ip_file, kmer_size=25, strictness=20):
         for seq_record in SeqIO.parse(ip_reads, "fastq"):
             curr_seq = str(seq_record.seq)
 
-            kmers_from_seq = kmers.kmerize(curr_seq, kmer_size)
+            kmers_from_seq = kmers.kmerize(curr_seq, k)
             matches = 0
             for kmer in kmers_from_seq:
                 if kmer in Ymer_set:
@@ -37,7 +37,7 @@ def classify_as_Y_chr(ip_file, kmer_size=25, strictness=20):
 
             # print "# of matches is :", matches
 
-            if matches > strictness:
+            if matches > strict:
                 # Y_seq_records.append(seq_record)
                 SeqIO.write(seq_record, op_reads, "fastq")
     print "Classification done"

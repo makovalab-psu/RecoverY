@@ -64,17 +64,17 @@ def fastq_chopper(num_pieces, ip_file, tmp_dir):
         print "wc stdout output:\n", e.output
 
     num_lines_in_ip_file = int(wc_out.strip().split(' ')[0])
-    print "Before : Number of lines in ip file : ", num_lines_in_ip_file
+    # print "Before : Number of lines in ip file : ", num_lines_in_ip_file
     if num_lines_in_ip_file % num_pieces != 0:
         num_lines_in_ip_file = num_lines_in_ip_file + num_pieces - (num_lines_in_ip_file % num_pieces)
-    print "After: Number of lines in ip file : ", num_lines_in_ip_file
+    # print "After: Number of lines in ip file : ", num_lines_in_ip_file
 
     num_lines_in_tmp_pieces = num_lines_in_ip_file / num_pieces
-    print "Before : Number of lines in each tmp piece : ", num_lines_in_tmp_pieces
+    # print "Before : Number of lines in each tmp piece : ", num_lines_in_tmp_pieces
     if num_lines_in_tmp_pieces % 4 != 0:
         num_lines_in_tmp_pieces = num_lines_in_tmp_pieces + 4 - (num_lines_in_tmp_pieces % 4)
         # num_lines_in_tmp_pieces = num_lines_in_tmp_pieces - (num_lines_in_tmp_pieces%4)
-    print "After: Number of lines in each tmp piece : ", num_lines_in_tmp_pieces
+    # print "After: Number of lines in each tmp piece : ", num_lines_in_tmp_pieces
 
     # num_lines_str = str(num_lines)
     cmd = ["split", "-l", str(num_lines_in_tmp_pieces), str(ip_file), tmp_dir + "/" + "piece_r1_"]
