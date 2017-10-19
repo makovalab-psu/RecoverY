@@ -12,6 +12,32 @@ To run RecoverY with default parameters,
 For help regarding usage and command line parameters, 
 
    	python recoverY.py --help 
+
+
+## Example
+
+The data folder contains an example reads dataset and kmer tables. 
+It can be used to test if RecoverY runs to completion. 
+
+Before running recoverY.py, please navigate to the data folder and un-compress the tar.xz file : 
+
+	cd data/
+	tar xf kmers_from_reads.tar.xz
+
+Subsequently, RecoverY can be run as : 
+
+	cd ../
+	python recoverY.py
+	
+**Results :**
+
+The data/r1.fastq and data/r2.fastq were generated from hg38 using wg-sim.
+Thus, each FASTQ record header has the chromosome of origin for a given read. 
+
+Using grep and wc commands, one can check if RecoverY has correctly retrieved most of the Y-reads. 
+
+	grep "@chrY" data/r1.fastq | wc -l
+	grep "@chrY" output/op_r1.fastq | wc -l
 	
 	
 ### Input
@@ -105,32 +131,6 @@ However, matplotlib and seaborn are not required for RecoverY to run. These pack
 RecoverY also uses the k-mer counter DSK. The latest DSK binaries (v2.2.0 for Linux 64 bit and v2.2.0 for Mac OSX) are provided in the dependency folder. Thus, if you are using either of these operating systems, DSK need not be installed, and you may use the binaries as provided.  
 
 For other operating systems, or if alternate versions or functionality of DSK is desired, see https://gatb.inria.fr/software/dsk/.
-
-
-## Example
-
-The data folder contains an example reads dataset and kmer tables. 
-It can be used to test if RecoverY runs to completion. 
-
-Before running recoverY.py, please navigate to the data folder and un-compress the tar.xz file : 
-
-	cd data/
-	tar xf kmers_from_reads.tar.xz
-
-Subsequently, RecoverY can be run as : 
-
-	cd ../
-	python recoverY.py
-	
-**Results :**
-
-The data/r1.fastq and data/r2.fastq were generated from hg38 using wg-sim.
-Thus, each FASTQ record header has the chromosome of origin for a given read. 
-
-Using grep and wc commands, one can check if RecoverY has correctly retrieved most of the Y-reads. 
-
-	grep "@chrY" data/r1.fastq | wc -l
-	grep "@chrY" output/op_r1.fastq | wc -l
 
 
 
