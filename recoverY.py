@@ -1,7 +1,5 @@
 from scripts import kmerPaint, classify_as_Y_chr, find_mates, kmers
 import argparse
-# un-comment line below if you have installed matplotlib
-# from scripts import plot_kmers
 import multiprocessing as mp
 import os
 import shutil
@@ -71,7 +69,8 @@ def main():
     #print "Running kmerPaint"
     kmerPaint.kmerPaint()
 
-    # Un-comment the lines below if you have matplotlib and seaborn
+    #Un-comment the lines below if you have matplotlib and seaborn
+    #from scripts import plot_kmers
     #print "Generating kmer plot"
     #plot_kmers.plot_kmers()
 
