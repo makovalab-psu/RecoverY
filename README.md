@@ -40,9 +40,9 @@ These are the Y-reads files produced by RecoverY.
 ### Parameters
 Important parameters for the user to choose are : 
 
-- k\_size (default: 25): k-mer size used for classifying reads. This must be the same as DSK's k-mer-size. We recommend a value between 25 and 31 for Illumina 150x150 bp reads
-- Ymer_\match_\threshold (default: 20) : the # of k-mers a read must match to the Ymer table in order to be classified as coming from the Y. We recommend a value between 20 and 50 for Illumina 150x150 bp reads.
---threads (default: 2): The number of threads that RecoverY should use. Can be set on the command line using --threads <THREADS>
+	k\_size (default: 25): k-mer size used for classifying reads. This must be the same as DSK's k-mer-size. We recommend a value between 25 and 31 for Illumina 150x150 bp reads
+	Ymer_\match_\threshold (default: 20) : the # of k-mers a read must match to the Ymer table in order to be classified as coming from the Y. We recommend a value between 20 and 50 for Illumina 150x150 bp reads.
+	threads (default: 2): The number of threads that RecoverY should use. Can be set on the command line using --threads <THREADS>
 
 
 ### Generating k-mer counts with DSK
