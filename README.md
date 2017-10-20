@@ -121,7 +121,7 @@ This file can be copied or linked to the data folder so that RecoverY can use it
 
 
 
-## Scripts 
+## Miscellaneous
 
 The following scripts are included with this distribution of RecoverY, and are automatically run by recovery.py as part of the pipeline. Users may consider them separately for custom needs if required. 
 
@@ -147,11 +147,11 @@ The following scripts are included with this distribution of RecoverY, and are a
 	
 	
 
-### License
+## License
 This program is released under the MIT License. Please see LICENSE.md for details
 
 
-### Citation
+## Citation
 If you use RecoverY in your research, please cite 
 
 [RecoverY : K-mer based read classification for Y-chromosome specific sequencing and assembly](https://doi.org/10.1101/148114), 
