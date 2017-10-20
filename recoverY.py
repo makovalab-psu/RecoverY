@@ -5,6 +5,7 @@ import os
 import shutil
 import glob
 from functools import partial
+import sys
 
 def main():
     """
@@ -85,6 +86,22 @@ def main():
     file_list = [f for f in os.listdir(op_tmp_dir)]
     for f in file_list:
         os.remove(op_tmp_dir + '/' + f)
+
+    # check if r1.fastq has been provided
+    try:
+        test_open = open("data/r1.fastq")
+    except IOError:
+        print "Unable to locate r1.fastq. Please check /data folder or provide your own FASTQ file."
+        sys.exit("^RecoverY exited with error, please see the message above.^")
+    test_open.close()
+
+    #  # check if r2.fastq has been provided
+    try:
+        test_open = open("data/r2.fastq")
+    except IOError:
+        print "Unable to locate r2.fastq. Please check /data folder or provide your own FASTQ file."
+        sys.exit("^RecoverY exited with error, please see the message above.^")
+    test_open.close()
 
     print "Started RecoverY"
     kmerPaint.kmerPaint(k_size)

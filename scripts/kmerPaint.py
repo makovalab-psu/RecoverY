@@ -3,6 +3,7 @@ import kmers
 from collections import defaultdict
 import numpy as np
 import os
+import sys
 
 
 
@@ -27,10 +28,25 @@ def kmerPaint(kmer_size=25):
     reads_Ymers = ip_dir + "/Ymer_table"
 
     op_file = ip_dir + "/trusted_DSK_counts_acc_to_fsY"
-
     # if file already exists, remove it
     if os.path.isfile(op_file):
         os.remove(op_file)
+
+    # check if kmers_from_reads exists
+    try:
+        test_open = open(reads_kmers)
+    except IOError:
+        print "Unable to locate reads_from_kmers file. Please check /data folder and uncompress tar file if provided."
+        sys.exit("^RecoverY exited with error, please see the message above.^")
+    test_open.close()
+
+    # check if trusted_kmers exists
+    try:
+        test_open = open(trusted_kmers)
+    except IOError:
+        print "Unable to locate trusted_kmers file. Please check /data folder or generate trusted kmers using DSK."
+        sys.exit("^RecoverY exited with error, please see the message above.^")
+    test_open.close()
 
     print "Creating a set from trusted kmers"
     trusted_kmers_set = kmers.make_set_from_kmer_abundance(trusted_kmers, kmer_size)
