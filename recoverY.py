@@ -25,25 +25,46 @@ def main():
     if not args['read_length']:
         read_len = 150
     else:
-        read_len = int(args['read_length'])
+        try:
+            read_len = int(args['read_length'])
+        except ValueError:
+            print "Error : read_length provided is not an integer"
+            sys.exit("^RecoverY exited with error, please see the message above.^")
 
     # set kmer_size from argument or using default here
     if not args['kmer_size']:
         k_size = 25
     else:
-        k_size = int(args['kmer_size'])
+        try:
+            k_size = int(args['kmer_size'])
+        except ValueError:
+            print "Error : kmer_size provided is not an integer"
+            sys.exit("^RecoverY exited with error, please see the message above.^")
+
+    # check if kmer_size is greater than read_length
+    if read_len-k_size < 0 :
+        print "Error : kmer_size provided is larger than read_length"
+        sys.exit("^RecoverY exited with error, please see the message above.^")
 
     # set match_threshold from argument or using default here
     if not args['Ymer_match_threshold']:
         strictness = int(0.4 * (read_len - k_size + 1 - (2*k_size*read_len/100)))
     else:
-        strictness = int(args['Ymer_match_threshold'])
+        try :
+            strictness = int(args['Ymer_match_threshold'])
+        except ValueError:
+            print "Error : Ymer_match_threshold provided is not an integer"
+            sys.exit("^RecoverY exited with error, please see the message above.^")
 
     # set num_threads from argument or using default here
     if not args['threads']:
         num_threads = 2
     else:
-        num_threads = int(args['threads'])
+        try:
+            num_threads = int(args['threads'])
+        except ValueError:
+            print "Error : threads provided is not an integer"
+            sys.exit("^RecoverY exited with error, please see the message above.^")
 
     print "RecoverY starting with : "
     print "number of processors : ", num_threads
