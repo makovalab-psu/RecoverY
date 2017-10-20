@@ -101,7 +101,10 @@ Thus, each FASTQ record header has the chromosome of origin for a given read.
 Using grep and wc commands, one can check if RecoverY has correctly retrieved most of the Y-reads. 
 
 	grep "@chrY" data/r1.fastq | wc -l
+	32116
+	
 	grep "@chrY" output/op_r1.fastq | wc -l
+	31468
 
 
 ### Generating k-mer counts with DSK
