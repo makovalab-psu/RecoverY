@@ -82,6 +82,7 @@ We can therefore check the number of correctly retrieved Y-reads by RecoverY:
 	grep "@chrY" output/op_r1.fastq | wc -l
 
 The result should be ```32116``` and ```31468```, respectively.
+This indicates that RecoverY corrently identified most of the Y chromosome reads from the sample.
 
 
 ## Generating trusted k-mers
