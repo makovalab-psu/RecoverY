@@ -12,7 +12,7 @@ Note that currently the names of the "data" folder and of the files are hardcode
 	kmers_from_reads : kmer counts for r1.fastq
 	trusted_kmers : kmers occuring in one copy on the Y chromosome. 
 
-See below for more info on generating these files.
+See [below](https://github.com/makovalab-psu/RecoverY/blob/master/README.md#input-files) for more info on generating these files.
 
 A typical run of RecoverY looks like this. 
 
