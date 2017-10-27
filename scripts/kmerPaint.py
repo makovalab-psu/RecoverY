@@ -38,6 +38,17 @@ def kmerPaint(kmer_size=25):
     except IOError:
         print "Unable to locate reads_from_kmers file. Please check /data folder and uncompress tar file if provided."
         sys.exit("^RecoverY exited with error, please see the message above.^")
+    # check if kmers_from_reads is in the right format
+    firstLine = test_open.readline()
+    test_line_kmer = firstLine.strip().split(' ')[0]
+    test_line_abundance = firstLine.strip().split(' ')[1]
+    for element in test_line_kmer :
+        if element not in "ACGTNacgtn":
+            print "Format of kmers_from_reads incorrect. Non-nucleotide character : ", element, "found in k-mer."
+            sys.exit("^RecoverY exited with error, please see the message above.^")
+    if int(test_line_abundance) < 0:
+        print "Format of kmers_from_reads incorrect. K-mer abundance is not an int with value >= 0"
+        sys.exit("^RecoverY exited with error, please see the message above.^")
     test_open.close()
 
     # check if trusted_kmers exists
@@ -45,6 +56,17 @@ def kmerPaint(kmer_size=25):
         test_open = open(trusted_kmers)
     except IOError:
         print "Unable to locate trusted_kmers file. Please check /data folder or generate trusted kmers using DSK."
+        sys.exit("^RecoverY exited with error, please see the message above.^")
+    # check if trusted_kmers is in the right format
+    firstLine = test_open.readline()
+    test_line_kmer = firstLine.strip().split(' ')[0]
+    test_line_abundance = firstLine.strip().split(' ')[1]
+    for element in test_line_kmer :
+        if element not in "ACGTNacgtn":
+            print "Format of trusted_kmers incorrect. Non-nucleotide character : ", element, "found in k-mer."
+            sys.exit("^RecoverY exited with error, please see the message above.^")
+    if int(test_line_abundance) < 0:
+        print "Format of trusted_kmers incorrect. K-mer abundance is not an int with value >= 0"
         sys.exit("^RecoverY exited with error, please see the message above.^")
     test_open.close()
 

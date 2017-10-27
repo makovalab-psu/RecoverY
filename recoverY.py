@@ -40,6 +40,19 @@ def main():
         except ValueError:
             print "Error : kmer_size provided is not an integer"
             sys.exit("^RecoverY exited with error, please see the message above.^")
+        # check if k-mer size is same as provided by DSK
+        # first check if kmers_from_reads exists
+        try:
+            test_open = open("data/kmers_from_reads")
+        except IOError:
+            print "Unable to locate reads_from_kmers file. Please check /data folder and uncompress tar file if provided."
+            sys.exit("^RecoverY exited with error, please see the message above.^")
+        firstLine = test_open.readline()
+        dsk_kmer_size = len(firstLine.strip().split(' ')[0])
+        if k_size != dsk_kmer_size :
+            print "Error : kmer_size provided is not the same as DSK kmer_size"
+            sys.exit("^RecoverY exited with error, please see the message above.^")
+        test_open.close()
 
     # check if kmer_size is greater than read_length
     if read_len-k_size < 0 :
