@@ -6,7 +6,6 @@ import os
 import sys
 
 
-
 def make_new_kmer_table(old_kmer_table_fp, threshold, new_kmer_table_fp):
     for line in old_kmer_table_fp:
         abundance = str(line).split(' ')[1]
@@ -14,67 +13,28 @@ def make_new_kmer_table(old_kmer_table_fp, threshold, new_kmer_table_fp):
             new_kmer_table_fp.write(line)
 
 
-def kmerPaint(kmer_size=25):
+def kmerPaint(trusted_kmers, reads_kmers, ip_dir, kmer_size=25):
     """
-    # This program paints histograms
-    # It needs as input two files
-    # file1 : fsY_kmer_table : the DSK output of fsY reads
-    # file2 : trusted_kmers : DSK output of trusted single copy genes
-    output : creates a new_kmer_table
+    :param trusted_kmers:
+    :param reads_kmers:
+    :param ip_dir:
+    :param kmer_size:
+    :return:
     """
-    ip_dir = "data"
-    trusted_kmers = ip_dir + "/trusted_kmers"
-    reads_kmers = ip_dir + "/kmers_from_reads"
     reads_Ymers = ip_dir + "/Ymer_table"
-
     op_file = ip_dir + "/trusted_DSK_counts_acc_to_fsY"
+
     # if file already exists, remove it
     if os.path.isfile(op_file):
         os.remove(op_file)
 
-    # check if kmers_from_reads exists
-    try:
-        test_open = open(reads_kmers)
-    except IOError:
-        print "Unable to locate reads_from_kmers file. Please check /data folder and uncompress tar file if provided."
-        sys.exit("^RecoverY exited with error, please see the message above.^")
-    # check if kmers_from_reads is in the right format
-    firstLine = test_open.readline()
-    test_line_kmer = firstLine.strip().split(' ')[0]
-    test_line_abundance = firstLine.strip().split(' ')[1]
-    for element in test_line_kmer :
-        if element not in "ACGTNacgtn":
-            print "Format of kmers_from_reads incorrect. Non-nucleotide character : ", element, "found in k-mer."
-            sys.exit("^RecoverY exited with error, please see the message above.^")
-    if int(test_line_abundance) < 0:
-        print "Format of kmers_from_reads incorrect. K-mer abundance is not an int with value >= 0"
-        sys.exit("^RecoverY exited with error, please see the message above.^")
-    test_open.close()
-
-    # check if trusted_kmers exists
-    try:
-        test_open = open(trusted_kmers)
-    except IOError:
-        print "Unable to locate trusted_kmers file. Please check /data folder or generate trusted kmers using DSK."
-        sys.exit("^RecoverY exited with error, please see the message above.^")
-    # check if trusted_kmers is in the right format
-    firstLine = test_open.readline()
-    test_line_kmer = firstLine.strip().split(' ')[0]
-    test_line_abundance = firstLine.strip().split(' ')[1]
-    for element in test_line_kmer :
-        if element not in "ACGTNacgtn":
-            print "Format of trusted_kmers incorrect. Non-nucleotide character : ", element, "found in k-mer."
-            sys.exit("^RecoverY exited with error, please see the message above.^")
-    if int(test_line_abundance) < 0:
-        print "Format of trusted_kmers incorrect. K-mer abundance is not an int with value >= 0"
-        sys.exit("^RecoverY exited with error, please see the message above.^")
-    test_open.close()
-
-    print "Creating a set from trusted kmers"
+    print "Testing validity of trusted_kmers file and reading into memory... "
     trusted_kmers_set = kmers.make_set_from_kmer_abundance(trusted_kmers, kmer_size)
+    print "Trusted_kmers file is valid"
 
-    print "Creating a dict from reads_kmers"
+    print "Testing validity of reads_kmers file and reading into memory... "
     fsY_kmers_dict = kmers.make_dict_from_kmer_abundance(reads_kmers, kmer_size)
+    print "Kmers_from_reads file is valid"
 
     print "Done, now going to find abundance of trusted kmers acc. to all reads_kmers"
     trusted_dict_from_fsY_dict = defaultdict(int)
@@ -82,15 +42,22 @@ def kmerPaint(kmer_size=25):
         trusted_dict_from_fsY_dict[trusted] = fsY_kmers_dict[trusted]
 
     all_abundances = [v for _, v in trusted_dict_from_fsY_dict.iteritems() if v > 0]
+    if not all_abundances:
+        print "Error : None of the trusted_kmers are found in kmers_from_reads"
+        print "Please check if trusted_kmers file is from an identical or related species, " \
+              "or if read_kmers_file is too small"
+        kmers.exit_gracefully()
     all_abundances = np.array(all_abundances)
     threshold = np.percentile(all_abundances, 5)
     print "The 5% threshold is :", threshold
 
     # OPTIONAL : create an output file with new kmerCounts
+    '''
     with open(op_file, "w") as output_handle:
         for k, v in trusted_dict_from_fsY_dict.iteritems():
             to_write = str(k) + ' ' + str(v) + '\n'
             output_handle.write(to_write)
+    '''
 
     print "Making the Ymer_table"
     with open(reads_kmers) as reads_kmers_fp, open(reads_Ymers, "w") as reads_Ymers_fp:
