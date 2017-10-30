@@ -26,6 +26,11 @@ def test_valid_kmer_format(sample_line, sample_kmer_size):
     :param sample_kmer_size:
     :return: True
     """
+    if ' ' not in sample_line.strip() :
+        print "Format of kmer file is incorrect. Needs a (kmer,count) pair separated by whitespace. " \
+              "Please see README for an example."
+        exit_gracefully()
+
     test_line_kmer_seq = sample_line.strip().split(' ')[0]
     test_line_kmer_abundance = sample_line.strip().split(' ')[1]
     for element in test_line_kmer_seq :
