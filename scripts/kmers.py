@@ -106,6 +106,10 @@ def fastq_chopper(num_pieces, ip_file, tmp_dir):
         print "wc stdout output:\n", e.output
 
     num_lines_in_ip_file = int(wc_out.strip().split(' ')[0])
+    if num_lines_in_ip_file % 4 != 0:
+        print "Error : FASTQ file format of : ", ip_file, " is incorrect."
+        print "FASTQ file terminates incorrectly"
+        exit_gracefully()
     # print "Before : Number of lines in ip file : ", num_lines_in_ip_file
     if num_lines_in_ip_file % num_pieces != 0:
         num_lines_in_ip_file = num_lines_in_ip_file + num_pieces - (num_lines_in_ip_file % num_pieces)

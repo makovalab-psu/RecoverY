@@ -18,6 +18,8 @@ def main():
     parser.add_argument('--kmer_size', help='Set kmer size (defaults to 25)', required=False)
     parser.add_argument('--Ymer_match_threshold', help='Set Y-mer match threshold (default is calculated by formula '
                                                        ': 0.4(l-k+1-2kl/100))', required=False)
+    parser.add_argument('--abundance_threshold', help='Set abundance threshold for classifying kmers as Y-mers '
+                                                      '(default is calculated by using Trusted k-mers)', required=False)
     parser.add_argument('--threads', help='Set number of threads for RecoverY (defaults to 2)', required=False)
     parser.add_argument('--plots', help='Use this to generate k-mer abundance plots if you have '
                                         'matplotlib & seaborn (defaults to False)', action='store_true', required=False)
@@ -154,7 +156,17 @@ def main():
 
     # Ready to start RecoverY
     print "Started RecoverY"
-    kmerPaint.kmerPaint(ip_file_trusted_kmers, ip_file_kmers_from_reads, ip_dir, k_size)
+    if not args['abundance_threshold']:
+        abundance = 0
+        kmerPaint.kmerPaint(ip_file_trusted_kmers, ip_file_kmers_from_reads, ip_dir, abundance, k_size)
+    else:
+        try:
+            # check if abundance threshold provided by user is an integer
+            abundance = int(args['abundance_threshold'])
+            kmerPaint.kmerPaint(ip_file_trusted_kmers, ip_file_kmers_from_reads, ip_dir, abundance, k_size)
+        except ValueError:
+            print "Error : Abundance threshold provided is not an integer"
+            kmers.exit_gracefully()
 
     # plot if needed
     if args['plots']:

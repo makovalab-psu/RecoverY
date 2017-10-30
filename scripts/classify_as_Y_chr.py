@@ -26,9 +26,14 @@ def classify_as_Y_chr(ip_file, k=25, strict=20):
 
     # now that you have a fresh op_file ...
     with open(ip_file, "r") as ip_reads, open(op_file, "a") as op_reads:
-        for seq_record in SeqIO.parse(ip_reads, "fastq"):
+        all_ip_records = SeqIO.parse(ip_reads, "fastq")
+        # check if input is fastq
+        valid_fastq = any(all_ip_records)
+        if not valid_fastq:
+            print "Error: r1.fastq is not a valid FASTQ file"
+            kmers.exit_gracefully()
+        for seq_record in all_ip_records :
             curr_seq = str(seq_record.seq)
-
             kmers_from_seq = kmers.kmerize(curr_seq, k)
             matches = 0
             for kmer in kmers_from_seq:

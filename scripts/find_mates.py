@@ -1,5 +1,6 @@
 import os
 from Bio import SeqIO
+import kmers
 
 def clean_record_id(seq_record):
     """
@@ -34,6 +35,11 @@ def find_mates(ref_r2_file_piece):
 
     with open(ref_ip_file) as ref_reads, open(r1_file) as r1_reads, open(r2_file, "a") as r2_reads:
         ref_record_iterator = SeqIO.parse(ref_reads, "fastq")
+        # check if input r2 is fastq
+        valid_fastq = any(ref_record_iterator)
+        if not valid_fastq:
+            print "Error: r2.fastq is not a valid FASTQ file"
+            kmers.exit_gracefully()
         for r1_record in SeqIO.parse(r1_reads, "fastq"):
             clean_r1_id = clean_record_id(r1_record)
             curr_ref_record = next(ref_record_iterator)
