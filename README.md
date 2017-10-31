@@ -23,6 +23,7 @@ RecoverY accepts the following parameters.
 
 	python recoverY.py [--help] [--read_length READ_LENGTH] [--kmer_size KMER_SIZE]
                    [--Ymer_match_threshold YMER_MATCH_THRESHOLD]
+		       [--abundance_threshold ABUNDANCE_THRESHOLD]
                    [--threads THREADS] [--plots]
 
 
@@ -31,6 +32,8 @@ RecoverY accepts the following parameters.
 - --read\_length (default:150) : The length of longest un-trimmed read input to RecoverY. This value is used for calculating Ymer\_match\_threshold below
 	
 - --Ymer\_match\_threshold : the number of k-mers a read must match to the Ymer table in order to be classified as coming from the Y. The default value is calculated by the formula : 0.4 * (read_len - kmer_size + 1 - (2\*kmer\_size\*read\_len/100)). User may change this, but we recommend a value between 20 and 50 for Illumina 150x150 bp reads.
+
+- --abundance\_threshold : the abundance threshold beyond which all k-mers are assumed to be Ymers. Specify this only if user does not have access to a trusted k-mers file and would like to manually set an abundance threshold.   
 	
 - --threads (default: 2): The number of threads that RecoverY should use. 
 
