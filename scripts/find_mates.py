@@ -34,24 +34,30 @@ def find_mates(ref_r2_file_piece):
         os.remove(r2_file)
 
     with open(ref_ip_file) as ref_reads, open(r1_file) as r1_reads, open(r2_file, "a") as r2_reads:
-        ref_record_iterator = SeqIO.parse(ref_reads, "fastq")
-        # check if input r2 is fastq
-        valid_fastq = any(ref_record_iterator)
-        if not valid_fastq:
+        try:
+            ref_record_generator = SeqIO.parse(ref_reads, "fastq")
+            for r1_record in SeqIO.parse(r1_reads, "fastq"):
+                clean_r1_id = clean_record_id(r1_record)
+                try:
+                    curr_ref_record = next(ref_record_generator)
+                    clean_ref_id = clean_record_id(curr_ref_record)
+                    # compare R1 record and ref R2 record
+                    # if they are the same, then write it to output file, else keep looping
+                    while clean_r1_id != clean_ref_id:
+                        try:
+                            curr_ref_record = next(ref_record_generator)
+                            clean_ref_id = clean_record_id(curr_ref_record)
+                        except (ValueError, StopIteration):
+                            print "Error: r2.fastq is not a valid FASTQ file pair for r1.fastq"
+                            kmers.exit_gracefully()
+                    # complement successfully found
+                    SeqIO.write(curr_ref_record, r2_reads, "fastq")
+                except (ValueError, StopIteration):
+                    print "Error: r2.fastq is not a valid FASTQ file"
+                    kmers.exit_gracefully()
+
+        except (ValueError, StopIteration):
             print "Error: r2.fastq is not a valid FASTQ file"
             kmers.exit_gracefully()
-        for r1_record in SeqIO.parse(r1_reads, "fastq"):
-            clean_r1_id = clean_record_id(r1_record)
-            curr_ref_record = next(ref_record_iterator)
-            clean_ref_id = clean_record_id(curr_ref_record)
-
-            # compare R1 record and ref R2 record
-            # if they are the same, then write it to output file, else keep looping
-            while clean_r1_id != clean_ref_id:
-                curr_ref_record = next(ref_record_iterator)
-                clean_ref_id = clean_record_id(curr_ref_record)
-
-            # complement successfully found
-            SeqIO.write(curr_ref_record, r2_reads, "fastq")
 
 # find_mates()
