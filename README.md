@@ -169,8 +169,8 @@ This program is released under the MIT License. Please see LICENSE.md for detail
 ## Citation
 If you use RecoverY in your research, please cite 
 
-[RecoverY : K-mer based read classification for Y-chromosome specific sequencing and assembly](https://doi.org/10.1101/148114), 
+[RecoverY : k-mer-based read classification for Y-chromosome-specific sequencing and assembly](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btx771/4670683), 
 
 Samarth Rangavittal, Robert S. Harris, Monika Cechova, Marta Tomaszkiewicz, Rayan Chikhi, Kateryna Makova, Paul Medvedev
 
-bioRxiv 2017.
+Bioinformatics 2017 https://doi.org/10.1093/bioinformatics/btx771.
