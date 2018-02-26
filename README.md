@@ -16,7 +16,7 @@ Note that currently the names of the "data" folder and of the files are hardcode
 
 A typical run of RecoverY looks like this. 
 
-	python recoverY.py --read_length 250 --k_size 31 --Ymer_match_threshold 50 --threads 8
+	python recoverY.py --read_length 250 --kmer_size 31 --Ymer_match_threshold 50 --threads 8
 	
 
 RecoverY accepts the following parameters. 
