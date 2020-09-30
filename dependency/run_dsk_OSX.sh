@@ -15,7 +15,7 @@ kmer_size=$2
 
 echo "Counting k-mers from the following file : " $R1_fsY_reads
 
-dsk-v2.2.0-bin-Darwin/bin/dsk -file $R1_fsY_reads -abundance-min 0 -kmer-size $kmer_size -out R1_dsk -verbose 0
+dsk-v2.2.0-bin-Darwin/bin/dsk -file $R1_fsY_reads -kmer-size $kmer_size -out R1_dsk -verbose 0
 
 dsk-v2.2.0-bin-Darwin/bin/dsk2ascii -file R1_dsk -out kmers_from_reads -verbose 0
 
